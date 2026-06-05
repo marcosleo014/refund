@@ -1,0 +1,216 @@
+.logo {
+    margin-bottom: 32px;
+    h1 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font: var(--ff-logo);
+        color: var(--green-100);
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+
+/* ------------ SEÇÃO SOLICITAÇÃO DE REEMBOLSO ------------------------- */
+.request-section {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-color: var(--white);
+    border-radius: 16px;
+}
+
+.request-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    h2 {
+        font: var(--heading-lg);
+        color: var(--gray-100);
+    }
+
+    p {
+        font: var(--body-md);
+        color: var(--gray-200);
+    }
+}
+
+.group-input {
+    display: grid;
+    gap: 16px;
+    grid-template: "title title" 1fr "category value" 1fr / 212fr 154fr;
+    input, select {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 15px 16px;
+        border-radius: 8px;
+        border: 1px solid var(--gray-300);
+        color: var(--gray-200);
+        font: var(--body-md);
+        &:hover {
+            border-color: var(--green-100);
+            outline: none;
+        }
+        &:active, &:focus{
+            border-color: var(--green-100);
+            outline: 0.5px solid var(--green-100);
+
+        }
+        &:placeholder-shown {
+            color: var(--gray-100)
+        }
+    }
+    .title-container {
+        grid-area: title;
+    }
+    .category-container {
+        grid-area: category;
+    }
+    .value-container {
+        grid-area: value;
+    }
+}
+
+.label {
+    display: inline-block;
+    font: var(--label);
+    color: var(--gray-200);
+    margin-bottom: 8px;
+}
+
+.add-expense-btn {
+    background-color: var(--green-100);
+    font: var(--body-md);
+    font-weight: 700;
+    color: var(--white);
+    border-radius: 8px;
+    border: none;
+    margin-top: 32px;
+    width: 100%;
+    padding: 15px 20px;
+    text-align: center;
+    cursor: pointer;
+    &:hover, &:focus {
+        background-color: var(--green-200);
+        outline: none;
+    }
+    &:disabled {
+        opacity: 0.5;
+    }
+}
+
+
+/* ---------------------- SEÇÃO DE SOLICITAÇÕES ------------------------ */
+.refund-request {
+    padding: 40px;
+    background-color: var(--white);
+    border-radius: 16px;
+}
+
+.refund-request-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--gray-400);
+    div {
+        display: flex;
+        align-items: center;
+        color: var(--gray-200);
+        h2 {
+            font: var(--body-lg);
+        }
+        p {
+            font: var(--label);
+            padding-left: 20px;
+            position: relative;
+            &::after {
+                content: "";
+                display: block;
+                width: 4px;
+                height: 4px;
+                background-color: var(--gray-300);
+                position: absolute;
+                left: 8px;
+                top: 6px;
+                border-radius: 9999px;
+            }
+        }
+    }
+    .expense-total {
+        font: var(--body-md);
+        color: var(--gray-200);
+        strong {
+            font: var(--heading-md);
+            color: var(--gray-100);
+        }
+    }
+}
+.refund-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.refund-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &>div:nth-child(1) {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        img {
+            box-sizing: content-box;
+            padding: 8px;
+            background-color: var(--gray-400);
+            border-radius: 9999px;
+            width: 18px;
+            height: 18px;
+            object-fit: cover;
+        }
+        div {
+            h3 {
+                font: var(--heading-sm);
+                color: var(--gray-100);
+            }
+            p {
+                font: var(--body-sm);
+                color: var(--gray-200);
+            }
+        }
+    }
+    &>div:nth-child(2) {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        p {
+            font: var(--body-sm);
+            color: var(--gray-200);
+            strong {
+                font: var(--subheading);
+                color: var(--gray-100);
+            }
+        }
+        button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+
+            &:hover, &:focus, &:active {
+                outline: none;
+                background-color: var(--gray-400);
+                border-radius: 4px;
+            }
+        }
+    }
+}

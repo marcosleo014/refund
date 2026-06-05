@@ -18,13 +18,13 @@
     --danger: #B51919;
 
     --ff-open-sans: "Open Sans", sans-serif;
-    --heading-lg: 700 20px/120% var(--ff-open-sans);
-    --heading-md: 700 16px/125% var(--ff-open-sans);
-    --heading-sm: 700 14px/129% var(--ff-open-sans);
-    --subheading: 600 14px/129% var(--ff-open-sans);
-    --body-lg: 400 16px/125% var(--ff-open-sans);
-    --body-md: 400 14px/129% var(--ff-open-sans);
-    --body-sm: 400 12px/133% var(--ff-open-sans);
+    --heading-lg: 700 18px/120% var(--ff-open-sans);
+    --heading-md: 700 12px/125% var(--ff-open-sans);
+    --heading-sm: 700 12px/129% var(--ff-open-sans);
+    --subheading: 600 12px/129% var(--ff-open-sans);
+    --body-lg: 400 14px/125% var(--ff-open-sans);
+    --body-md: 400 12px/129% var(--ff-open-sans);
+    --body-sm: 400 10px/133% var(--ff-open-sans);
     --label: 400 10px/140% var(--ff-open-sans);
 
     --ff-logo: 800 25px "Nunito Sans", sans-serif;
@@ -33,11 +33,14 @@
 body {
     background-color: var(--gray-400);
     font-family: var(--ff-open-sans);
-    margin-inline: auto;
-
-    padding: 20px 30px;
 }
 
 li {
     list-style: none;
+}
+
+.container {
+    max-width: 340px;
+    margin-inline: auto;
+    padding-inline: 10px;
 }

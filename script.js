@@ -4,6 +4,7 @@ const exepenseCategory = document.querySelector('#category');
 const expenseValue = document.querySelector('#value');
 const refundList = document.querySelector('.refund-list');
 const counterExpenses = document.querySelector('.count');
+const valueTotalExpenses = document.querySelector('.expense-total strong');
 
 let listExpenses = localStorage.getItem('listExpenses');
 if (listExpenses) {
@@ -14,6 +15,8 @@ if (listExpenses) {
 
 // --------------- att section refund-request -------------------
 attLista();
+attCounterExpenses();
+attValueTotalExpenses();
 
 function attLista() {
     listExpenses.forEach(item => addItemUl(createExpense(item)));
@@ -25,15 +28,30 @@ form.onsubmit = (event) => {
     
     newExpense = {
         id: Date.now(),
-        title: expenseTitle.value,
+        title: expenseTitle.value.trim(),
         category: exepenseCategory.value,
         value: expenseValue.value.replace(/\D+/g, '') / 100
     }
+    if (!(newExpense.title)) {
+        alert('insira o título da despesa')
+        return
+    }
+    if (!(newExpense.category)) {
+        alert('Escolha a categoria da despesa')
+        return
+    }
+    if (!(newExpense.value)) {
+        alert('Informe o valor da despesa')
+        return
+    }
+        
+    
 
     addItemUl(createExpense(newExpense));
     listExpenses.push(newExpense);
     saveLocalStorage();
     attCounterExpenses();
+    attValueTotalExpenses();
     form.reset()
 };
 
@@ -51,13 +69,17 @@ function createExpense(expense) {
     const imgBtn = document.createElement('img');
 
     li.classList.add('refund-item');
-    li.setAttribute('name-item-id', expense.id);
+    li.setAttribute('data-item-id', expense.id);
     img.src = getValueSRC(expense.category);
     h3.innerText = expense.title;
     pL.innerText = getTextCategory(expense.category);
     pR.innerText = 'R$ ';
-    strong.innerText = expense.value.toLocaleString('pt-BR');
-    imgBtn.src = 'assets/close.svg'
+    strong.innerText = expense.value.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+    btn.classList.add('btn-close');
+    imgBtn.src = 'assets/close.svg';
 
     subDivL.append(h3, pL);
     divL.append(img, subDivL);
@@ -115,6 +137,21 @@ function getTextCategory(category) {
 }
 
 
+// ------------------------ remover expense -------------------------------
+refundList.addEventListener('click', (event) => {
+    const btn = event.target.closest('button');
+    if(btn) {
+        const itemExpense = btn.closest('li');
+        itemExpense.remove();
+        console.log(listExpenses)
+        listExpenses = listExpenses.filter(item => item.id != itemExpense.dataset.itemId);
+        console.log(listExpenses)
+        attCounterExpenses();
+        attValueTotalExpenses();
+        saveLocalStorage();
+    }
+});
+
 // ---------------------- Configuração o input VALOR -------------------------------
 expenseValue.oninput = (event) => {
     event.target.value = formatToBRL(validation(event.target.value));
@@ -137,12 +174,12 @@ function formatCurrency(value) {
     })
 }
 
+
 // --------------------- configurar o "placeholder" do select --------
 exepenseCategory.onchange = (event) => {
-    if (event.target.value === '') {
-        event.target.style.color = 'var(--gray-200)'
-    } else {
-        event.target.style.color = 'var(--gray-100)'
+    if (event.target.value != 'Selecionar') {
+        event.target.style.color = 'var(--gray-100)';
+        console.log('evento disparado, alvo:', event.target)
     }
 }
 
@@ -158,4 +195,12 @@ function getListExpenses() {
 function attCounterExpenses() {
     const count = listExpenses.length;
     counterExpenses.innerText = count > 1 ? `${count} despesas` : `${count} despesa`
+}
+
+function attValueTotalExpenses() {
+    const valueTotal = listExpenses.reduce((total,item) => total += item.value, 0);
+    valueTotalExpenses.innerText = valueTotal.toString().toLocaleString('BRL', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
 }

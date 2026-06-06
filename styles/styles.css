@@ -52,7 +52,7 @@ main {
         padding: 8px 12px;
         border-radius: 8px;
         border: 1px solid var(--gray-300);
-        color: var(--gray-200);
+        color: var(--gray-100);
         font: var(--body-md);
         &:hover {
             border-color: var(--green-100);

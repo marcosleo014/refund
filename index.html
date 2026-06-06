@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles/global.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
 
 </head>
 <body>
@@ -44,7 +45,7 @@
                         <span class="label">
                             TÍTULO DA DESPESA
                         </span>
-                        <input type="text" name="title" id="title">
+                        <input type="text" name="title" id="title" placeholder="Insira uma descrição">
                     </label>
 
                     <label class="category-container">
@@ -52,7 +53,7 @@
                             CATEGORIA
                         </span>
                         <select name="category" id="category">
-                            <option selected hidden>Selecione</option>
+                            <option selected hidden></option>
                             <option value="food">Alimentação</option>
                             <option value="hosting">Hospedagem</option>
                             <option value="transport">Transporte</option>
@@ -65,7 +66,7 @@
                         <span class="label">
                             VALOR
                         </span>
-                        <input type="text" name="value" id="value">
+                        <input type="text" name="value" id="value" placeholder="R$ 0,00">
                     </label>
 
                 </div>
@@ -95,101 +96,6 @@
             </header>
 
             <ul class="refund-list">
-
-                <li class="refund-item">
-                    <div>
-                        <img src="assets/ForkKnife.svg" alt="">
-                        <div>
-                            <h3 class="expense-title">Almoço</h3>
-                            <p class="expense-category">Alimentação</p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p>
-                            R$ <strong>34,78</strong>
-                        </p>
-                        <button>
-                            <img src="assets/close.svg" alt="">
-                        </button>
-                    </div>
-                </li>
-
-                <li class="refund-item">
-                    <div>
-                        <img src="assets/Bed.svg" alt="">
-                        <div>
-                            <h3 class="expense-title">Hotel</h3>
-                            <p class="expense-category">Hospedagem</p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p>
-                            R$ <strong>1.200,00</strong>
-                        </p>
-                        <button>
-                            <img src="assets/close.svg" alt="">
-                        </button>
-                    </div>
-                </li>
-
-                <li class="refund-item">
-                    <div>
-                        <img src="assets/ForkKnife.svg" alt="">
-                        <div>
-                            <h3 class="expense-title">Lanche</h3>
-                            <p class="expense-category">Alimentação</p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p>
-                            R$ <strong>12,35</strong>
-                        </p>
-                        <button>
-                            <img src="assets/close.svg" alt="">
-                        </button>
-                    </div>
-                </li>
-                
-                <li class="refund-item">
-                    <div>
-                        <img src="assets/PoliceCar.svg" alt="">
-                        <div>
-                            <h3 class="expense-title">Taxi</h3>
-                            <p class="expense-category">Transporte</p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p>
-                            R$ <strong>47,65</strong>
-                        </p>
-                        <button>
-                            <img src="assets/close.svg" alt="">
-                        </button>
-                    </div>
-                </li>
-
-                <li class="refund-item">
-                    <div>
-                        <img src="assets/Wrench.svg" alt="">
-                        <div>
-                            <h3 class="expense-title">Internet</h3>
-                            <p class="expense-category">Serviços</p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p>
-                            R$ <strong>99,90</strong>
-                        </p>
-                        <button>
-                            <img src="assets/close.svg" alt="">
-                        </button>
-                    </div>
-                </li>
 
                 <li class="refund-item">
                     <div>

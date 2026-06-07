@@ -5,6 +5,8 @@ const expenseValue = document.querySelector('#value');
 const refundList = document.querySelector('.refund-list');
 const counterExpenses = document.querySelector('.count');
 const valueTotalExpenses = document.querySelector('.expense-total strong');
+const msgToastContainer = document.querySelector('.msg-toast');
+const btnToast = document.querySelector('.close-toast');
 
 let listExpenses = localStorage.getItem('listExpenses');
 if (listExpenses) {
@@ -33,15 +35,15 @@ form.onsubmit = (event) => {
         value: expenseValue.value.replace(/\D+/g, '') / 100
     }
     if (!(newExpense.title)) {
-        alert('insira o título da despesa')
+        toastMsg('Insira o título da despesa', true)
         return
     }
     if (!(newExpense.category)) {
-        alert('Escolha a categoria da despesa')
+        toastMsg('Escolha a categoria da despesa', true)
         return
     }
     if (!(newExpense.value)) {
-        alert('Informe o valor da despesa')
+        toastMsg('Informe o valor da despesa', true)
         return
     }
         
@@ -53,6 +55,7 @@ form.onsubmit = (event) => {
     attCounterExpenses();
     attValueTotalExpenses();
     form.reset()
+    toastMsg('Despesa adicionada', false)
 };
 
 function createExpense(expense) {
@@ -149,10 +152,11 @@ refundList.addEventListener('click', (event) => {
         attCounterExpenses();
         attValueTotalExpenses();
         saveLocalStorage();
+        toastMsg('Despesa excluída', true)
     }
 });
 
-// ---------------------- Configuração o input VALOR -------------------------------
+// ------------------ Configuração o input VALOR -------------------------------
 expenseValue.oninput = (event) => {
     event.target.value = formatToBRL(validation(event.target.value));
 };
@@ -176,12 +180,12 @@ function formatCurrency(value) {
 
 
 // --------------------- configurar o "placeholder" do select --------
-exepenseCategory.onchange = (event) => {
-    if (event.target.value != 'Selecionar') {
-        event.target.style.color = 'var(--gray-100)';
-        console.log('evento disparado, alvo:', event.target)
-    }
-}
+// exepenseCategory.onchange = (event) => {
+//     if (event.target.value != 'Selecionar') {
+//         event.target.style.color = 'var(--gray-100)';
+//         console.log('evento disparado, alvo:', event.target)
+//     }
+// }
 
 //  ------------- localStorage ------------------------------
 function saveLocalStorage() {
@@ -199,8 +203,29 @@ function attCounterExpenses() {
 
 function attValueTotalExpenses() {
     const valueTotal = listExpenses.reduce((total,item) => total += item.value, 0);
-    valueTotalExpenses.innerText = valueTotal.toString().toLocaleString('BRL', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
+    valueTotalExpenses.innerText = formatCurrency(valueTotal).replace('R$', '').trim();
 }
+
+// -------------------- toast msg -----------------
+let toastTimeout;
+
+function toastMsg(msg, warning) {
+    btnToast.closest('aside').style.display = 'flex';
+    msgToastContainer.innerText = msg;
+    const toastContainer = msgToastContainer.closest('.toast-notification');
+    if (warning) {
+        toastContainer.style.backgroundColor = '#C93847';
+    } else {
+        toastContainer.style.backgroundColor = '#2E7D32';
+    }
+    toastContainer.classList.remove('toast-off');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout( () => {
+        toastContainer.classList.add('toast-off');
+    }, 4000);
+}
+
+// --------------- button close of toast ----------------
+btnToast.addEventListener('click', () => {
+    btnToast.closest('aside').style.display = 'none'
+})

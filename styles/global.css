@@ -18,14 +18,14 @@
     --danger: #B51919;
 
     --ff-open-sans: "Open Sans", sans-serif;
-    --heading-lg: 700 18px/120% var(--ff-open-sans);
-    --heading-md: 700 12px/125% var(--ff-open-sans);
-    --heading-sm: 700 12px/129% var(--ff-open-sans);
-    --subheading: 600 12px/129% var(--ff-open-sans);
-    --body-lg: 400 14px/125% var(--ff-open-sans);
-    --body-md: 400 12px/129% var(--ff-open-sans);
-    --body-sm: 400 10px/133% var(--ff-open-sans);
-    --label: 400 10px/140% var(--ff-open-sans);
+    --heading-lg: 700 28px/120% var(--ff-open-sans);
+    --heading-md: 700 18px/125% var(--ff-open-sans);
+    --heading-sm: 700 16px/129% var(--ff-open-sans);
+    --subheading: 600 15px/129% var(--ff-open-sans);
+    --body-lg: 400 16px/125% var(--ff-open-sans);
+    --body-md: 400 15px/129% var(--ff-open-sans);
+    --body-sm: 400 13px/133% var(--ff-open-sans);
+    --label: 400 12px/140% var(--ff-open-sans);
 
     --ff-logo: 800 25px "Nunito Sans", sans-serif;
 }
@@ -40,11 +40,65 @@ li {
 }
 
 .container {
-    max-width: 340px;
+    max-width: 360px;
     margin-inline: auto;
-    padding-inline: 10px;
+    padding-inline: 5px;
 }
 
-option[value='has'] {
-    color: var(--gray-200);
+/* @media (prefers-color-scheme: dark) {
+    :root {
+    --gray-100: #F9FBFA;
+    --gray-200: #CDD5D2;
+    --gray-300: #A5B1AD;
+
+    --gray-400: #3A4441;
+
+    --gray-500: #222927;
+
+    --white: #151A18;
+
+    --green-100: #2CB178;
+    --green-200: #45C88F;
+
+    --danger: #E05252;
+    }
+} */
+
+@media (width > 1280px) {
+    .container {
+        max-width: 1260px;
+        margin-inline: auto;
+        padding-inline: 10px;
+    }
+    .logo {
+        position: fixed;
+        top: 45px;
+        left: calc((100vw - 1260px) / 2);
+    }
+    main {
+        margin-top: 100px;
+        display: grid;
+        grid-template-columns: 410px 1fr;
+        position: relative;
+    }
+    .request-section {
+        max-width: 410px;
+        height: min-content;
+        position: fixed;
+    }
+    .refund-request {
+        grid-column: 2/3;
+    }
+    /* :root {
+        --heading-lg: 700 28px/120% var(--ff-open-sans);
+        --heading-md: 700 18px/125% var(--ff-open-sans);
+        --heading-sm: 700 16px/129% var(--ff-open-sans);
+        --subheading: 600 15px/129% var(--ff-open-sans);
+        --body-lg: 400 16px/125% var(--ff-open-sans);
+        --body-md: 400 15px/129% var(--ff-open-sans);
+        --body-sm: 400 13px/133% var(--ff-open-sans);
+        --label: 400 12px/140% var(--ff-open-sans);
+
+        --ff-logo: 800 30px "Nunito Sans", sans-serif;
+    } */
 }

@@ -116,7 +116,7 @@ main {
 
 /* ---------------------- SEÇÃO DE SOLICITAÇÕES ------------------------ */
 .refund-request {
-    padding: 30px;
+    padding: 20px;
     background-color: var(--white);
     border-radius: 16px;
 }
@@ -124,8 +124,8 @@ main {
 .refund-request-header {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
     border-bottom: 1px solid var(--gray-400);
     div {
         display: flex;
@@ -174,14 +174,14 @@ main {
     &>div:nth-child(1) {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         img {
             box-sizing: content-box;
-            padding: 8px;
+            padding: 10px;
             background-color: var(--gray-400);
             border-radius: 9999px;
-            width: 18px;
-            height: 18px;
+            width: 26px;
+            height: 26px;
             object-fit: cover;
         }
         div {
@@ -198,8 +198,8 @@ main {
     &>div:nth-child(2) {
         display: flex;
         align-items: center;
-        gap: 8px;
         p {
+            white-space: nowrap;
             font: var(--body-sm);
             color: var(--gray-200);
             strong {
@@ -222,3 +222,38 @@ main {
         }
     }
 }
+
+.toast-notification {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 12px;
+    width: fit-content;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    
+    transition: transform ease 350ms;
+    
+    p {
+        font: var(--body-md);
+        color: var(--white);
+        /* white-space: nowrap; */
+        text-align: center;
+    }
+    
+    button {
+        all: none;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}
+
+
+.toast-off {
+    transform: translate( -50%, -50px) scale(0);
+    opacity: 0;
+}
+
